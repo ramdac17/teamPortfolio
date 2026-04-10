@@ -163,7 +163,16 @@
     .image-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      /* Default for projects/hero */
+      object-fit: cover; 
+    }
+
+    /* --- TEAM SPECIFIC IMAGE FIX --- */
+    .team-grid .image-wrapper img {
+      /* Change to contain to show entire head without cropping */
+      object-fit: contain;
+      /* Adds padding so the head isn't touching the very edge of the container */
+      padding: 10px; 
     }
 
     .hero-label {
@@ -261,80 +270,3 @@
           <h3 style="margin: 10px 0; font-size: 1.2rem;">Gemelyn G. Ong</h3>
           <p style="font-size: 0.85rem; color: var(--text-muted);">Business Intelligence Analyst | Power BI Developer | Front-End Developer. I transform complex data into clear, 
             impactful insights—designed with both precision and user experience in mind.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div style="margin-bottom: 3rem;">
-        <span class="hero-label">Capabilities</span>
-        <h2 style="font-size: 2.5rem; margin: 0;">Technical Services</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-item"><h4 class="service-category">Front-End</h4><span class="service-name">React & Next.js Web Apps</span></div>
-        <div class="service-item"><h4 class="service-category">Automation</h4><span class="service-name">UiPath & Make.com RPA</span></div>
-        <div class="service-item"><h4 class="service-category">Analytics</h4><span class="service-name">Power BI Visualizations</span></div>
-        <div class="service-item"><h4 class="service-category">Mobile</h4><span class="service-name">React Native Solutions</span></div>
-        <div class="service-item"><h4 class="service-category">Backend</h4><span class="service-name">API Engineering & Node.js</span></div>
-        <div class="service-item"><h4 class="service-category">Database</h4><span class="service-name">PostgreSQL & MongoDB</span></div>
-        <div class="service-item"><h4 class="service-category">Security</h4><span class="service-name">CCTV & Network Setup</span></div>
-        <div class="service-item"><h4 class="service-category">Design</h4><span class="service-name">Figma Prototyping</span></div>
-        <div class="service-item"><h4 class="service-category">Infrastructure</h4><span class="service-name">Cloud Migration & Hosting</span></div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div style="margin-bottom: 3rem;">
-        <span class="hero-label">Portfolio</span>
-        <h2 style="font-size: 2.5rem; margin: 0;">Our Projects</h2>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Alpha" alt="Project"></div>
-          <span class="hero-label">Web Dev</span>
-          <h4 style="margin: 5px 0;">E-Commerce Platform</h4>
-        </div>
-        <div class="project-card">
-          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Beta" alt="Project"></div>
-          <span class="hero-label">Automation</span>
-          <h4 style="margin: 5px 0;">Inventory RPA Bot</h4>
-        </div>
-        <div class="project-card">
-          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Gamma" alt="Project"></div>
-          <span class="hero-label">BI</span>
-          <h4 style="margin: 5px 0;">Sales Dashboard</h4>
-        </div>
-        
-        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+4" alt="P"></div><h4 style="margin: 5px 0;">App Project 4</h4></div>
-        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+5" alt="P"></div><h4 style="margin: 5px 0;">App Project 5</h4></div>
-        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+6" alt="P"></div><h4 style="margin: 5px 0;">App Project 6</h4></div>
-        
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 7</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 8</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 9</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 10</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 11</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 12</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 13</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 14</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 15</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 16</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 17</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 18</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 19</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 20</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 21</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 22</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 23</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 24</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 25</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 26</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 27</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 28</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 29</h4></div>
-        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 30</h4></div>
-      </div>
-    </section>
-  </div> 
-</body>
-</html>
