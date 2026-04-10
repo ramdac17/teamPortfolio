@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebniX | Digital Solutions</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      /* WebniX Brand Palette */
       --bg: #05070a;
       --card-bg: #0d1117;
       --fg: #ffffff;
-      --accent: #00d2ff; /* Cyan Glow */
-      --accent-purple: #9d50bb; /* Purple from Logo */
+      --accent: #00d2ff;
+      --accent-purple: #9d50bb;
       --border: #1b232e;
       --text-muted: #8b949e;
       --font-main: 'Inter', sans-serif;
-      --font-heading: 'Playfair Display', serif;
       --glow: 0 0 15px rgba(0, 210, 255, 0.3);
+      --page-padding: 8%; /* Controls side margins */
     }
 
     * { box-sizing: border-box; }
@@ -34,6 +33,14 @@
       font-family: var(--font-main);
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
+    }
+
+    /* --- GLOBAL LAYOUT --- */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     /* --- NAVIGATION --- */
@@ -51,9 +58,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 8%;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding: 1.2rem 0; /* Vertical only because of parent container */
     }
 
     .nav-logo {
@@ -86,12 +91,6 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover { 
-      color: var(--accent);
-      text-shadow: var(--glow);
     }
 
     /* --- HERO --- */
@@ -99,19 +98,16 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 120px 8% 60px;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding-top: 100px;
       gap: 60px;
     }
 
-    .hero-content { flex: 1.2; }
+    .hero-content { flex: 1; }
 
     .hero-title {
-      font-family: var(--font-main); /* Switched to Inter for tech feel */
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 6vw, 4rem);
       line-height: 1.1;
-      margin: 0 0 1.5rem 0;
+      margin-bottom: 1.5rem;
       font-weight: 800;
       letter-spacing: -2px;
     }
@@ -123,27 +119,60 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-description {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 550px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-image-container {
-      flex: 1.5;
-      position: relative;
-    }
+    .hero-image-container { flex: 1.2; }
 
     .hero-image {
       width: 100%;
-      border-radius: 4px;
+      border-radius: 8px;
       border: 1px solid var(--border);
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      transition: transform 0.5s ease;
     }
 
-    /* --- SKILLS GRID --- */
+    /* --- TEAM SECTION --- */
+    section { padding: 100px 0; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .member-card {
+      background: rgba(13, 17, 23, 0.3);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-5px);
+    }
+
+    .member-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Forces all images to be square */
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    .member-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Crops image to fill the square area */
+      filter: grayscale(100%) brightness(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    .member-card:hover .member-image-wrapper img {
+      filter: grayscale(0%) brightness(1);
+    }
+
+    /* --- SKILLS & PROJECTS --- */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -151,66 +180,28 @@
     }
 
     .skill-item {
-      padding: 2rem;
+      padding: 1.5rem;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      transition: all 0.3s ease;
     }
 
-    .skill-item:hover { 
-      border-color: var(--accent);
-      transform: translateY(-5px);
-      box-shadow: var(--glow);
-    }
-
-    .skill-item h4 {
-      margin: 0 0 0.8rem 0;
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* --- PROJECTS --- */
     .project-card {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
-      margin-bottom: 6rem;
+      gap: 3rem;
+      margin-bottom: 4rem;
       align-items: center;
-      padding: 40px;
+      padding: 30px;
       background: rgba(13, 17, 23, 0.4);
       border: 1px solid var(--border);
       border-radius: 12px;
     }
 
-    .project-info h3 {
-      font-size: 2rem;
-      margin: 0.5rem 0 1rem 0;
-      color: var(--fg);
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 1.5rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
     .project-image-link img {
       width: 100%;
       border-radius: 4px;
-      filter: brightness(0.7) contrast(1.1);
-      transition: all 0.5s ease;
-    }
-
-    .project-card:hover .project-image-link img {
-      filter: brightness(1);
+      border: 1px solid var(--border);
     }
 
     .hero-label {
@@ -223,7 +214,7 @@
 
     @media (max-width: 968px) {
       .hero { flex-direction: column-reverse; text-align: center; }
-      .project-card { grid-template-columns: 1fr; gap: 2rem; padding: 20px; }
+      .project-card { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
@@ -231,7 +222,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-container">
+    <div class="container nav-container">
       <a href="#" class="nav-logo">WebniX <span>Digital</span></a>
       <ul class="nav-links">
         <li><a href="#team">Team</a></li>
@@ -242,102 +233,77 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Smart <i>Solutions</i>,<br>Stronger Results.</h1>
-      <p class="hero-description">
-        We help businesses grow with technology that works, so you can focus on what matters most.
-      </p>
-      <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-        <p style="font-family: monospace; color: var(--accent); font-size: 0.8rem; margin: 0;">STATUS: UPLINK ACTIVE</p>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 5px 0 0 0;">teamwebnix@webnix.com</p>
-      </div>
-    </div>
-    
-    <div class="hero-image-container">
-      <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/webnixV2.jpg" alt="WebniX Digital Solutions" class="hero-image">
-    </div>
-  </header>
-
-  <section id="team">
-    <div style="margin-bottom: 4rem;">
-      <h2 style="font-size: 2.5rem; margin: 0;">Expert Team</h2>
-      <div style="width: 50px; hieght: 2px; background: var(--accent); margin-top: 10px;"></div>
-    </div>
-    
-    <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-      <div class="member-card">
-        <div style="border: 1px solid var(--border); padding: 5px; margin-bottom: 20px;">
-          <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/ThomasV1.jpg" style="width:100%; filter: grayscale(100%) brightness(0.8);">
+  <div class="container">
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Smart <i>Solutions</i>,<br>Stronger Results.</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 500px;">
+          Empowering businesses through cutting-edge full-stack development and intelligent automation.
+        </p>
+        <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
+          <p style="font-family: monospace; color: var(--accent); font-size: 0.8rem; margin: 0;">SYSTEM STATUS: ONLINE</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 5px 0 0 0;">teamwebnix@webnix.com</p>
         </div>
-        <span class="hero-label">Project Manager</span>
-        <h3 style="margin: 10px 0;">Thomas B. Masagca, Jr.</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">15+ years of experience in web products, marketing, and general management.</p>
       </div>
+      <div class="hero-image-container">
+        <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/webnixV2.jpg" alt="WebniX Branding" class="hero-image">
+      </div>
+    </header>
 
-      <div class="member-card">
-        <div style="border: 1px solid var(--border); padding: 5px; margin-bottom: 20px;">
-          <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/MerricV4.jpg" style="width:100%; filter: grayscale(100%) brightness(0.8);">
+    <section id="team">
+      <div style="margin-bottom: 3rem;">
+        <span class="hero-label">The Core</span>
+        <h2 style="font-size: 2.5rem; margin: 0;">Expert Team</h2>
+      </div>
+      
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="member-image-wrapper">
+            <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/ThomasV1.jpg" alt="Thomas">
+          </div>
+          <span class="hero-label">Project Manager</span>
+          <h3 style="margin: 10px 0; font-size: 1.2rem;">Thomas B. Masagca, Jr.</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Decades of expertise in digital strategy and leadership.</p>
         </div>
-        <span class="hero-label">Lead Developer</span>
-        <h3 style="margin: 10px 0;">Merric R. Evangelista</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Specializing in React ecosystems and intelligent automation via RPA.</p>
-      </div>
 
-      <div class="member-card">
-        <div style="border: 1px solid var(--border); padding: 5px; margin-bottom: 20px;">
-          <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/Gem Avatar V1.jpg" style="width:100%; filter: grayscale(100%) brightness(0.8);">
+        <div class="member-card">
+          <div class="member-image-wrapper">
+            <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/MerricV4.jpg" alt="Merric">
+          </div>
+          <span class="hero-label">Lead Developer</span>
+          <h3 style="margin: 10px 0; font-size: 1.2rem;">Merric R. Evangelista</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Specialist in React ecosystems and RPA engineering.</p>
         </div>
-        <span class="hero-label">BI Analyst & UI/UX</span>
-        <h3 style="margin: 10px 0;">Gemelyn G. Ong</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Transforming complex data into impactful insights through Power BI.</p>
+
+        <div class="member-card">
+          <div class="member-image-wrapper">
+            <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/Gem Avatar V1.jpg" alt="Gemelyn">
+          </div>
+          <span class="hero-label">BI & UI/UX</span>
+          <h3 style="margin: 10px 0; font-size: 1.2rem;">Gemelyn G. Ong</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Data visualization expert and creative design lead.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about">
-    <div style="margin-bottom: 4rem;">
-      <h2 style="font-size: 2.5rem; margin: 0;">Technical Services</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-item"><h4>Automation</h4><span>Workflows & RPA</span></div>
-      <div class="skill-item"><h4>Web Design</h4><span>Responsive UI/UX</span></div>
-      <div class="skill-item"><h4>Programming</h4><span>Custom Code Solutions</span></div>
-      <div class="skill-item"><h4>PBI Dashboard</h4><span>Actionable Insights</span></div>
-      <div class="skill-item"><h4>Infrastructure</h4><span>CCTV & Networking</span></div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div style="margin-bottom: 4rem;">
-      <h2 style="font-size: 2.5rem; margin: 0;">Selected Projects</h2>
-    </div>
-
-    <div class="project-card">
-      <div class="project-info">
-        <span class="hero-label">Ecosystem</span>
-        <h3>PRX - Pinoy Runner Extreme</h3>
-        <p style="color: var(--text-muted);">A synchronized full-stack platform for high-performance athletes.</p>
-        <a href="https://e-prx-uv-4-website.vercel.app/dashboard" target="_blank" class="project-link">Launch Site →</a>
+    <section id="about">
+      <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 2rem; margin: 0;">Technical Capabilities</h2>
       </div>
-      <a href="#" class="project-image-link">
-        <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/prx-dashboard.png" alt="PRX">
-      </a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-info">
-        <span class="hero-label">Mobile</span>
-        <h3>ePRX On the Go</h3>
-        <p style="color: var(--text-muted);">Cross-platform React Native application for real-time tracking.</p>
-        <span style="color: var(--accent); font-size: 0.8rem; font-family: monospace;">[ PENDING RELEASE ]</span>
+      <div class="skills-grid">
+        <div class="skill-item">
+            <h4 style="color: var(--accent); font-size: 0.7rem; margin: 0 0 10px 0; letter-spacing: 1px;">DEVELOPMENT</h4>
+            <span>Full-stack React & Mobile</span>
+        </div>
+        <div class="skill-item">
+            <h4 style="color: var(--accent); font-size: 0.7rem; margin: 0 0 10px 0; letter-spacing: 1px;">AUTOMATION</h4>
+            <span>RPA & Workflow Logic</span>
+        </div>
+        <div class="skill-item">
+            <h4 style="color: var(--accent); font-size: 0.7rem; margin: 0 0 10px 0; letter-spacing: 1px;">ANALYTICS</h4>
+            <span>Power BI Dashboards</span>
+        </div>
       </div>
-      <a href="#" class="project-image-link">
-        <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/ePRXCombinedV1.jpg" alt="ePRX Mobile">
-      </a>
-    </div>
-    
-  </section>
-
-</body>
+    </section>
+  </div> </body>
 </html>
