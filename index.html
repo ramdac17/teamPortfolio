@@ -76,39 +76,65 @@
 
     .nav-links a:hover { color: var(--fg); }
 
-    /* --- HERO (Refactored to No Image) --- */
+    /* --- HERO --- */
     .hero {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       padding: 120px 8% 60px;
-      max-width: 1000px;
+      max-width: 1400px;
       margin: 0 auto;
-      text-align: center;
+      gap: 60px;
+    }
+
+    .hero-content { 
+      flex: 1.2; 
+      text-align: left;
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 1;
-      margin: 0 0 2.5rem 0;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.1;
+      margin: 0 0 2rem 0;
       font-weight: 700;
     }
 
     .hero-title i { font-weight: 400; color: var(--text-muted); }
 
     .hero-description {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 500px;
       margin-bottom: 3rem;
+    }
+
+    .hero-image-container {
+      flex: 1.5;
+      max-width: 650px; 
+      position: relative;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16/10; 
+      object-fit: cover;
+      object-position: center;
+      background: var(--soft-grey);
+      filter: grayscale(100%);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    .hero-image:hover { 
+      filter: grayscale(0%); 
+      transform: scale(1.02);
     }
 
     /* --- SECTIONS --- */
     section {
-      padding: 6rem 8%;
+      padding: 8rem 8%;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -247,8 +273,10 @@
     }
 
     @media (max-width: 968px) {
+      .hero { flex-direction: column-reverse; gap: 3rem; text-align: center; }
       .project-card { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-title { font-size: 3.5rem; }
+      .hero-image-container { width: 100%; max-width: 100%; }
+      .hero-description { margin: 0 auto 3rem; }
     }
   </style>
 </head>
@@ -267,12 +295,22 @@
   </nav>
 
   <header class="hero">
-    <h1 class="hero-title">Engineering <br><i>Digital Solutions</i></h1>
-    <p class="hero-description">
-      A decade of experience building robust, scalable full-stack applications with a focus on precision and performance.
-    </p>
-    <div class="system-contact" style="font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 2rem;">
-      <p>teamwebnix@webnix.com — 0999 XXX XXXX</p>
+    <div class="hero-content">
+      <h1 class="hero-title">Engineering <br><i>Digital Solutions</i></h1>
+      <p class="hero-description">
+        A decade of experience building robust, scalable full-stack applications with a focus on precision and performance.
+      </p>
+      <div class="system-contact" style="font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 2rem; display: inline-block;">
+        <p>teamwebnix@webnix.com — 0999 XXX XXXX</p>
+      </div>
+    </div>
+    
+    <div class="hero-image-container">
+      <img 
+        src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/WebniXV1.jpg" 
+        alt="WebniX Digital Solutions" 
+        class="hero-image"
+      >
     </div>
   </header>
 
@@ -288,7 +326,7 @@
         </div>
         <div class="member-info">
           <span class="member-role">Project Manager</span>
-          <h3 class="member-name">Thomas</h3>
+          <h3 class="member-name">Thomas B. Masaggka Ja /</h3>
         </div>
       </div>
 
