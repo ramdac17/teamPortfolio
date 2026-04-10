@@ -34,7 +34,6 @@
       line-height: 1.6;
     }
 
-    /* --- GLOBAL LAYOUT --- */
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -128,14 +127,17 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
-    /* --- TEAM --- */
-    .team-grid {
+    /* --- CARDS & GRIDS --- */
+    .team-grid, .services-grid, .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
-    .member-card {
+    .team-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .services-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .member-card, .service-item, .project-card {
       background: rgba(13, 17, 23, 0.3);
       border: 1px solid var(--border);
       padding: 20px;
@@ -143,54 +145,25 @@
       transition: all 0.3s ease;
     }
 
-    .member-card:hover {
-      border-color: var(--accent-purple);
+    .member-card:hover, .service-item:hover, .project-card:hover {
+      border-color: var(--accent);
       transform: translateY(-5px);
     }
 
-    .member-image-wrapper {
+    .image-wrapper {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
       border-radius: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border: 1px solid var(--border);
+      background: #000;
     }
 
-    .member-image-wrapper img {
+    .image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    /* --- SERVICES --- */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 1.5rem;
-    }
-
-    .service-item {
-      padding: 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transition: border-color 0.3s ease;
-    }
-
-    .service-item:hover { border-color: var(--accent); }
-
-    .service-category {
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
     }
 
     .hero-label {
@@ -203,10 +176,19 @@
       margin-bottom: 5px;
     }
 
+    .service-category {
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
     /* --- RESPONSIVE --- */
     @media (max-width: 968px) {
-      .hero { flex-direction: column-reverse; text-align: center; padding-bottom: 60px; }
-      .services-grid { grid-template-columns: 1fr; }
+      .hero { flex-direction: column-reverse; text-align: center; }
+      .services-grid, .projects-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
@@ -247,40 +229,30 @@
         <span class="hero-label">The Core</span>
         <h2 style="font-size: 2.5rem; margin: 0;">Meet the Team</h2>
       </div>
-      
       <div class="team-grid">
         <div class="member-card">
-          <div class="member-image-wrapper">
+          <div class="image-wrapper" style="aspect-ratio: 1/1;">
             <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/ThomasV1.jpg" alt="Thomas">
           </div>
           <span class="hero-label">Project Manager</span>
           <h3 style="margin: 10px 0; font-size: 1.2rem;">Thomas B. Masagca, Jr.</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Over 15 years of experience in web industry with extensive background in web products 
-            and development, marketing and general management. Has been an I.T. Manager to different US and Asian based corporation with responsibilities
-            for company's technology strategies before founding Papa Lemon. Also the owner of Pest Express Solution and AISKRIMAN.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Extensive background in web products, technology strategy, and general management.</p>
         </div>
-
         <div class="member-card">
-          <div class="member-image-wrapper">
+          <div class="image-wrapper" style="aspect-ratio: 1/1;">
             <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/MerricV4.jpg" alt="Merric">
           </div>
           <span class="hero-label">Lead Developer</span>
           <h3 style="margin: 10px 0; font-size: 1.2rem;">Merric R. Evangelista</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Drawing on a 15-year career in the IT industry, 
-            I specialize in architecting high-performance React ecosystems and streamlining business logic through RPA. 
-            I have evolved alongside the digital landscape—transitioning from building robust core systems to engineering the 
-            next generation of intelligent automation. My career is defined by a dual mastery of Full-Stack Engineering and
-            Robotic Process Automation (RPA), Allowing me to deliver solutions that are not only high-performing but also operationally efficient.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Specialist in React ecosystems and architecting intelligent RPA solutions.</p>
         </div>
-
         <div class="member-card">
-          <div class="member-image-wrapper">
+          <div class="image-wrapper" style="aspect-ratio: 1/1;">
             <img src="https://raw.githubusercontent.com/ramdac17/teamPortfolio/main/assets/Gem Avatar V1.jpg" alt="Gemelyn">
           </div>
           <span class="hero-label">BI & UI/UX</span>
           <h3 style="margin: 10px 0; font-size: 1.2rem;">Gemelyn G. Ong</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Business Intelligence Analyst | Power BI Developer | Front-End Developer. 
-            I transform complex data into clear, impactful insights—designed with both precision and user experience in mind..</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Data visualization expert transforming complex data into impactful UI/UX insights.</p>
         </div>
       </div>
     </section>
@@ -290,49 +262,69 @@
         <span class="hero-label">Capabilities</span>
         <h2 style="font-size: 2.5rem; margin: 0;">Technical Services</h2>
       </div>
-
       <div class="services-grid">
-        <div class="service-item">
-          <h4 class="service-category">Front-End Development</h4>
-          <span class="service-name">Full-stack Web Apps (React/Next.js)</span>
+        <div class="service-item"><h4 class="service-category">Front-End</h4><span class="service-name">React & Next.js Web Apps</span></div>
+        <div class="service-item"><h4 class="service-category">Automation</h4><span class="service-name">UiPath & Make.com RPA</span></div>
+        <div class="service-item"><h4 class="service-category">Analytics</h4><span class="service-name">Power BI Visualizations</span></div>
+        <div class="service-item"><h4 class="service-category">Mobile</h4><span class="service-name">React Native Solutions</span></div>
+        <div class="service-item"><h4 class="service-category">Backend</h4><span class="service-name">API Engineering & Node.js</span></div>
+        <div class="service-item"><h4 class="service-category">Database</h4><span class="service-name">PostgreSQL & MongoDB</span></div>
+        <div class="service-item"><h4 class="service-category">Security</h4><span class="service-name">CCTV & Network Setup</span></div>
+        <div class="service-item"><h4 class="service-category">Design</h4><span class="service-name">Figma Prototyping</span></div>
+        <div class="service-item"><h4 class="service-category">Infrastructure</h4><span class="service-name">Cloud Migration & Hosting</span></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div style="margin-bottom: 3rem;">
+        <span class="hero-label">Portfolio</span>
+        <h2 style="font-size: 2.5rem; margin: 0;">Our Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Alpha" alt="Project"></div>
+          <span class="hero-label">Web Dev</span>
+          <h4 style="margin: 5px 0;">E-Commerce Platform</h4>
         </div>
-        <div class="service-item">
-          <h4 class="service-category">Automation</h4>
-          <span class="service-name">RPA Strategy & Implementation using UiPath, Make.com and Blue Prism</span>
+        <div class="project-card">
+          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Beta" alt="Project"></div>
+          <span class="hero-label">Automation</span>
+          <h4 style="margin: 5px 0;">Inventory RPA Bot</h4>
         </div>
-        <div class="service-item">
-          <h4 class="service-category">Analytics</h4>
-          <span class="service-name">Power BI Data Visualization</span>
+        <div class="project-card">
+          <div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/00d2ff?text=Project+Gamma" alt="Project"></div>
+          <span class="hero-label">BI</span>
+          <h4 style="margin: 5px 0;">Sales Dashboard</h4>
         </div>
-        <div class="service-item">
-          <h4 class="service-category">Mobile App Development</h4>
-          <span class="service-name">React Native Mobile Solutions</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Backend Development</h4>
-          <span class="service-name">API Engineering & Integration</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Database Management</h4>
-          <span class="service-name">Database Architecture (Prisma/PostgreSQL), MongoDB and Railway</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Security</h4>
-          <span class="service-name">CCTV Installation (Dahua)</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Design</h4>
-          <span class="service-name">Brand Visual Identity and UI/UX Prototyping (Figma)</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Infrastructure</h4>
-          <span class="service-name">Network Configuration</span>
-        </div>
-        <div class="service-item">
-          <h4 class="service-category">Support</h4>
-          <span class="service-name">Technical Documentation and Cloud Migration & Hosting</span>
-        </div>
-       
+        
+        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+4" alt="P"></div><h4 style="margin: 5px 0;">App Project 4</h4></div>
+        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+5" alt="P"></div><h4 style="margin: 5px 0;">App Project 5</h4></div>
+        <div class="project-card"><div class="image-wrapper"><img src="https://via.placeholder.com/400x225/0d1117/9d50bb?text=Project+6" alt="P"></div><h4 style="margin: 5px 0;">App Project 6</h4></div>
+        
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 7</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 8</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 9</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 10</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 11</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 12</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 13</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 14</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 15</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 16</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 17</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 18</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 19</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 20</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 21</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 22</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 23</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 24</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 25</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 26</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 27</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 28</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 29</h4></div>
+        <div class="project-card"><div class="image-wrapper"></div><h4 style="margin: 5px 0;">Project Slot 30</h4></div>
       </div>
     </section>
   </div> 
